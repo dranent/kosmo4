@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-ㅇㄹㄹㅇㄹㅇㄹ
+현동환이는 다리가 다리다 .
 </body>
 </html>
