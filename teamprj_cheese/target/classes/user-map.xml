@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- <mapper namespace="userNameSpace"> 
+<mapper namespace="userNameSpace"> 
+-->
+<mapper namespace="com.biz.mapper.UserMapper">
+	<!-- <resultMap id="userMap" type="com.biz.vo.UserVO">
+		<id property="seq" column="seq" />
+		<result property="id" column="id" />
+		<result property="pw" column="pw" />
+		<result property="name" column="name" />
+	</resultMap> -->
+	
+ 	<sql id="commonSelect">seq, id, pw, name</sql>
+ 	
+ 	<select id="getUser" parameterType="com.biz.vo.UserVO"
+ 						resultType="com.biz.vo.UserVO">
+ 		select name 
+ 		from testmvcuser 
+ 		where id=#{id} and pw=#{pw} <!--  jdbcType=VARCHAR -->
+ 	</select>
+	
+	<!-- create table  testmvcuser(
+	id number primary key,
+	pw varchar2(20),
+ 	name varchar2(20));
+ 	insert into testmvcuser values(1,'test','111','테스터');
+ 	commit;  -->
+	
+	
+	<!-- <select id="allUser" resultType="com.biz.vo.UserVO">
+		select  *
+		from testmvcuser
+	</select>
+	<insert id="insertUser" parameterType="com.biz.vo.UserVO">
+		insert into testmvcuser
+		values(#{id},#{pw},#{name})
+	</insert>  -->
+	
+</mapper>	
