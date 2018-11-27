@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- <mapper namespace="userNameSpace"> 
+<mapper namespace="userNameSpace"> 
+-->
+<mapper namespace="com.biz.mapper.MemberInterestMapper">
+	 <resultMap id="categorysMap" type="com.biz.vo.MemberInterestVO">
+		<result property="mid" column="mid" />
+		<result property="mseq" column="mseq" />
+		<result property="ballade" column="ballade" />
+		<result property="dance" column="dance" />
+		<result property="raphiphop" column="raphiphop" />
+		<result property="rnbsoul" column="rnbsoul" />
+		<result property="indie" column="indie" />
+		<result property="rockmetal" column="rockmetal" />
+		<result property="trot" column="trot" />
+		<result property="jazz" column="jazz" />
+		<result property="except1" column="except1" />
+		<result property="fiction" column="fiction" />
+		<result property="poem" column="poem" />
+		<result property="essay" column="essay" />
+		<result property="classic" column="classic" />
+		<result property="cartoon" column="cartoon" />
+		<result property="appellative" column="appellative" />
+		<result property="history" column="history" />
+		<result property="science" column="science" />
+		<result property="health" column="health" />
+		<result property="hobby" column="hobby" />
+		<result property="leisure" column="leisure" />
+		<result property="trip" column="trip" />
+		<result property="magazine" column="magazine" />
+		<result property="except2" column="except2" />
+		<result property="cook" column="cook" />
+		<result property="diy" column="diy" />
+		<result property="except3" column="except3" />
+		<result property="stroll" column="stroll" />
+		<result property="festival" column="festival" />
+		<result property="shopping" column="shopping" />
+		<result property="bicycle" column="bicycle" />
+		<result property="climbing" column="climbing" />
+		<result property="exhibition" column="exhibition" />
+		<result property="movie" column="movie" />
+		<result property="performance" column="performance" />
+		<result property="game" column="game" />
+	</resultMap>
+	
+ 	<select id="getMemberInterest" resultType="com.biz.vo.MemberInterestVO">
+ 		select * from member_interest
+ 		where mid=#{value}
+ 	</select>
+ 	
+ 	<!-- <insert id="setMemberInterest" parameterType="com.biz.vo.CategoryVO">
+		insert into category
+		values(#{mid},#{interestgroup},#{category})
+	</insert> -->
+	
+	
+ 	<!-- <select id="getInterest" resultType="interestMap">
+ 		select *
+ 		from interest 
+ 	</select>
+ 	
+ 	<select id="getCategory" resultType="categoryMap">
+ 		select *
+ 		from category 
+ 	</select> -->
+ 	
+ 	<!-- <insert id="setCategory" parameterType="com.biz.vo.CategoryVO">
+		insert into category
+		values(cate_seq.nextval,#{interestgroup},#{category})
+	</insert>
+	
+	<insert id="setInterest" parameterType="com.biz.vo.InterestVO">
+		insert into interest
+		values(interest_seq.nextval,#{interestgroup},#{interest})
+	</insert> -->
+	
+	<!-- create table  testmvcuser(
+	id number primary key,
+	pw varchar2(20),
+ 	name varchar2(20));
+ 	insert into testmvcuser values(1,'test','111','테스터');
+ 	commit;  -->
+	
+	
+	<!-- <select id="allUser" resultType="com.biz.vo.UserVO">
+		select  *
+		from testmvcuser
+	</select>
+	<insert id="insertUser" parameterType="com.biz.vo.UserVO">
+		insert into testmvcuser
+		values(#{id},#{pw},#{name})
+	</insert>  -->
+	
+</mapper>	

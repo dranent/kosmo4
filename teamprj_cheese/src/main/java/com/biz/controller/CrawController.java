@@ -13,13 +13,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import com.biz.common.WebCraw;
-import com.biz.service.CartService;
+//import com.biz.service.CartService;
 import com.biz.vo.CrawVO;
 
 @Controller
 public class CrawController {
-	@Autowired
-	private CartService cartService;
+//	@Autowired
+//	private CartService cartService;
 	
 	//--------------------------------------------------------
 	// 기상청  : 일기예보 크롤링 

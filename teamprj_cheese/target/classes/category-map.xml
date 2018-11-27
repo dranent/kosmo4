@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- <mapper namespace="userNameSpace"> 
+<mapper namespace="userNameSpace"> 
+-->
+<mapper namespace="com.biz.mapper.CategoryMapper">
+	 <resultMap id="categoryMap" type="com.biz.vo.CategoryVO">
+		<id property="cateseq" column="cateseq" />
+		<result property="interestgroup" column="interestgroup" />
+		<result property="category" column="category" />
+		<collection property="interests" resultMap="interestMap"></collection>
+	</resultMap>
+	
+	<resultMap id="interestMap" type="com.biz.vo.InterestVO">
+		<id property="iseq" column="iseq" />
+		<result property="interestgroup" column="interestgroup" />
+		<result property="interest" column="interest" />
+	</resultMap>
+	
+ 	<select id="getCategory" resultMap="categoryMap">
+ 		select i.iseq as iseq, c.cateseq as cateseq,c.category as category, i.interest as interest from category c, interest i
+		where c.interestgroup=i.interestgroup 
+ 	</select>
+ 	
+ 	
+ 	<!-- <select id="getInterest" resultType="interestMap">
+ 		select *
+ 		from interest 
+ 	</select>
+ 	
+ 	<select id="getCategory" resultType="categoryMap">
+ 		select *
+ 		from category 
+ 	</select> -->
+ 	
+ 	<!-- <insert id="setCategory" parameterType="com.biz.vo.CategoryVO">
+		insert into category
+		values(cate_seq.nextval,#{interestgroup},#{category})
+	</insert>
+	
+	<insert id="setInterest" parameterType="com.biz.vo.InterestVO">
+		insert into interest
+		values(interest_seq.nextval,#{interestgroup},#{interest})
+	</insert> -->
+	
+	<!-- create table  testmvcuser(
+	id number primary key,
+	pw varchar2(20),
+ 	name varchar2(20));
+ 	insert into testmvcuser values(1,'test','111','테스터');
+ 	commit;  -->
+	
+	
+	<!-- <select id="allUser" resultType="com.biz.vo.UserVO">
+		select  *
+		from testmvcuser
+	</select>
+	<insert id="insertUser" parameterType="com.biz.vo.UserVO">
+		insert into testmvcuser
+		values(#{id},#{pw},#{name})
+	</insert>  -->
+	
+</mapper>	

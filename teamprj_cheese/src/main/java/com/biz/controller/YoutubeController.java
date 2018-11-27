@@ -34,9 +34,9 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.biz.common.YoutubeSearch;
-import com.biz.service.BoardService;
-import com.biz.vo.BoardReplyVO;
-import com.biz.vo.BoardVO;
+//import com.biz.service.BoardService;
+//import com.biz.vo.BoardReplyVO;
+//import com.biz.vo.BoardVO;
 import com.biz.vo.YoutubeVO;
 import com.google.gson.Gson;
 

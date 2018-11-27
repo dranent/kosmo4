@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- <mapper namespace="userNameSpace"> 
+<mapper namespace="userNameSpace"> 
+-->
+<mapper namespace="com.biz.mapper.MemberMapper">
+	 <resultMap id="memberMap" type="com.biz.vo.MemberVO">
+		<id property="mseq" column="mseq" />
+		<result property="mid" column="mid" />
+		<result property="email" column="email" />
+		<result property="regdate" column="regdate" />
+		<result property="joinroute" column="joinroute" />
+		<result property="profileimg" column="profileimg" />
+	</resultMap>
+	
+ 	<select id="getMember" resultType="com.biz.vo.MemberVO">
+ 		select mseq, mid, email, regdate, joinroute, profileimg 
+ 		from member 
+ 		where mid=#{value}
+ 	</select>
+ 	
+ 	<insert id="setMember" parameterType="com.biz.vo.MemberVO">
+		insert into member
+		values(member_seq.nextval,#{mid},#{email},sysdate,#{joinroute},#{profileimg})
+	</insert>
+	
+	<!-- create table  testmvcuser(
+	id number primary key,
+	pw varchar2(20),
+ 	name varchar2(20));
+ 	insert into testmvcuser values(1,'test','111','테스터');
+ 	commit;  -->
+	
+	
+	<!-- <select id="allUser" resultType="com.biz.vo.UserVO">
+		select  *
+		from testmvcuser
+	</select>
+	<insert id="insertUser" parameterType="com.biz.vo.UserVO">
+		insert into testmvcuser
+		values(#{id},#{pw},#{name})
+	</insert>  -->
+	
+</mapper>	
