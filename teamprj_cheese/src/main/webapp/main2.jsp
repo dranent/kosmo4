@@ -23,7 +23,7 @@ $(document).ready(function(){
 <table style="border:0; cellpadding:0; cellspacing:1; width:100%;">
 	<tr height=55px valign="middle" Style="background-color:red;">
 		<td>
-			<jsp:include page="toparea.jsp" ></jsp:include>
+			<jsp:include page="main/top.jsp" ></jsp:include>
 		</td>
 	</tr>
 </table>

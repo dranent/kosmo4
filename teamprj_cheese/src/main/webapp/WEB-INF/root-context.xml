@@ -37,6 +37,7 @@
 	  <property name="mapperLocations" value="classpath*:*-map.xml" />
 	  <property name="configLocation" value="classpath:config-mybatis.xml" />
 	</bean>
+
 	<!-- @Repository MapperInterface를 사용할 경우 -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer"> 
 		<property name="basePackage" value="com.biz.mapper" />
@@ -68,7 +69,7 @@
 	</bean>
 	<!-- 승인된 자바스크립트 원본과 승인된 리디렉션 URI -->
 	<bean id="googleOAuth2Parameters" class="org.springframework.social.oauth2.OAuth2Parameters">
-		<property name="scope" value="https://www.googleapis.com/auth/plus.login" />
+		<property name="scope" value="https://www.googleapis.com/auth/plus.login https://www.googleapis.com/auth/plus.profile.emails.read https://www.googleapis.com/auth/user.birthday.read" />
 		<property name="redirectUri" value="http://localhost/oauth2callback" />
 	</bean>	
 		

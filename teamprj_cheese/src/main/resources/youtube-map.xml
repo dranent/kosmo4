@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 
+create table board (
+	bseq number primary key,
+	title varchar2(100),
+	contents varchar2(500),
+	userid varchar2(100),
+	regdate date default sysdate,
+	filePath varchar2(100),
+	fileName varchar2(100)	
+);
+create sequence board_seq
+start with 1 increment by 1;
+
+create table board_reply (
+rseq number primary key,
+reply varchar2(100),
+bseq number,
+userid varchar2(20),
+regdate date default sysdate
+);
+
+create sequence board_reply_seq
+start with 1 
+increment by 1;
+
+
+insert into board(bseq ,title,contents,userid,regdate)
+values(board_seq.nextval, '??뺛걠1','??곸뒠','lee',sysdate);	
+
+insert into board_reply(rseq, reply, bseq, userid)
+values(board_reply_seq.nextval, 'dddd', 1, 'lee');
+
+commit;
+-->
+
+
+<!-- <mapper namespace="boardNameSpace"> -->
+<mapper namespace="com.biz.mapper.YoutubeMapper">
+	
+	
+	<resultMap id="YoutubeMap" type="com.biz.vo.InterestVO">
+		<id property="iseq" column="iseq" />
+		<result property="interestgroup" column="interestgroup" />
+		<result property="interest" column="interest" />
+	</resultMap>
+	
+	
+	<!-- <select id="checkInterestList" parameterType="com.biz.vo.MemberVO" resultType="com.biz.vo.???" >
+		select c.category,  i.INTEREST,   c.cateseq, i.INTERESTGROUP, i.iseq
+		from  member_interest mi, interest i, category c
+		where mi.mseq=#{mseq} and mi.iseq = i.iseq and i.INTERESTGROUP=c.INTERESTGROUP;
+	</select> -->
+	
+	<select id="video" resultMap="YoutubeMap">
+		select interest from interest where iseq=24 <!-- 24~28video -->
+	</select>
+	
+	<select id="music" resultMap="YoutubeMap">
+		select interest from interest where iseq=5 <!--1~9music  -->
+	</select>
+	
+	
+	<!-- 
+	<select id="select1" resultMap="InterestMap">
+		select interest from interest where iseq=5
+	</select> -->
+	
+	<!-- <select id="select2" parameterType="int" resultMap="InterestMap">
+		select interest from interest where iseq=2 
+	</select> -->
+	
+	
+	
+	
+	
+</mapper>	

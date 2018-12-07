@@ -52,8 +52,11 @@
 			  <div class="dropdown-content">
 			    <a href="#">logout</a>
 			    <a text-decoration:none; onclick="window.open('user/terms/terms.jsp', '로그인','width=735,height=350,location=no,status=no,scrollbars=yes');">이용약관</a>
-			    <a href="#">Link 3</a>
-			  </div>
+			    <a href="${google_url}"><img src="/img/googleLogin.jpg" style="block-size: 55px;"></a>
+			  
+			  
+
+			  
 	
 	</div>
 </div>

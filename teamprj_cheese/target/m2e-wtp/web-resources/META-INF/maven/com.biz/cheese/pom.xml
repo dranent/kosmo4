@@ -200,7 +200,7 @@
 				<artifactId>google-api-client</artifactId> 
 				<version>1.22.0</version> 
 			</dependency> 
-		<!-- social api : google--> 
+		<!-- social api : google login--> 
 			<dependency> 
 				<groupId>org.springframework.social</groupId> 
 					<artifactId>spring-social-google</artifactId> 

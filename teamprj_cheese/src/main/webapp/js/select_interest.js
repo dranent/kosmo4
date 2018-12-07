@@ -67,26 +67,33 @@ $(document).ready(function(){
 	});
 	
 	
-	/* 
-	$.ajax({
-        type:"POST",
-        url:"/selectinterest",
-        //dataType:"JSON", // 옵션이므로 JSON으로 받을게 아니면 안써도 됨
-        success : function(data) {
-              // 통신이 성공적으로 이루어졌을 때 이 함수를 타게 된다.
-			alert(data);
-        },
-
-        complete : function(data) {
-              // 통신이 실패했어도 완료가 되었을 때 이 함수를 타게 된다.
-        	alert(data);
-        },
-
-        error : function(xhr, status, error) {
-
-              alert("에러발생");
-
-        }
-
-  }); */
+	
+//	$.ajax({
+//        type:"POST",
+//        url:"/selectinterest",
+//        //dataType:"JSON", // 옵션이므로 JSON으로 받을게 아니면 안써도 됨
+//        success : function(data) {
+//              // 통신이 성공적으로 이루어졌을 때 이 함수를 타게 된다.
+//        	console.log(data);
+//			$.map(data, mapCallback);
+//			function mapCallback( v,  i) { 
+//				console.log(v.cateseq + "," + v.category);
+//			}
+//			
+//			
+//        },
+//
+//        complete : function(data) {
+//              // 통신이 실패했어도 완료가 되었을 때 이 함수를 타게 된다.
+//        	console.log(data);
+//			console.log(data.cateseq + "," + data.category);
+//        },
+//
+//        error : function(xhr, status, error) {
+//
+//              alert("에러발생");
+//
+//        }
+//
+//  });
 });

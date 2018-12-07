@@ -95,7 +95,7 @@ public class BoardController {
 	}
 	
 	
-	@RequestMapping(value = "/write", method = RequestMethod.POST)
+	@RequestMapping(value = "/write", method = RequestMethod.POST )
 	public String write(BoardVO vo) {  					//uid=kim&upw=111&
 		
 //	public String write(@ModelAttribute BoardVO vo) { 	//uid=kim&upw=111&
@@ -154,6 +154,14 @@ public class BoardController {
 	public ModelAndView list( ) {
 		System.out.println("Controller ......");
 		ArrayList<BoardVO> list = svc.svcList();
+		System.out.println("==================================================================="+svc.svcList()+"===================================================================");
+		System.out.println(list.size());
+		for (int i = 0; i < list.size(); i++) {
+			int tmp=list.get(i).getBseq();
+			System.out.println(tmp);
+			
+		}
+		
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("LVL_LIST", list);
 		mav.setViewName("board/list");

@@ -1,45 +1,86 @@
 <?xml version="1.0" encoding="UTF-8" ?> 
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<!-- <mapper namespace="userNameSpace"> 
-<mapper namespace="userNameSpace"> 
--->
+<!-- <mapper namespace="userNameSpace"> <mapper namespace="userNameSpace"> -->
 <mapper namespace="com.biz.mapper.MemberMapper">
-	 <resultMap id="memberMap" type="com.biz.vo.MemberVO">
+	<resultMap id="memberMap" type="com.biz.vo.MemberVO">
 		<id property="mseq" column="mseq" />
-		<result property="mid" column="mid" />
 		<result property="email" column="email" />
 		<result property="regdate" column="regdate" />
 		<result property="joinroute" column="joinroute" />
 		<result property="profileimg" column="profileimg" />
+		<result property="delyn" column="delyn" />
+		<result property="name" column="name" />
+		<result property="gender" column="gender" />
+		<result property="birthday" column="birthday" />
+		<result property="deldate" column="deldate" />
+		<result property="pw" column="pw" />
 	</resultMap>
 	
- 	<select id="getMember" resultType="com.biz.vo.MemberVO">
- 		select mseq, mid, email, regdate, joinroute, profileimg 
- 		from member 
- 		where mid=#{value}
- 	</select>
- 	
- 	<insert id="setMember" parameterType="com.biz.vo.MemberVO">
-		insert into member
-		values(member_seq.nextval,#{mid},#{email},sysdate,#{joinroute},#{profileimg})
+	
+	
+
+	<!-- mseq,email,regdate,joinroute,profileimg,delyn,name,gender,birthday,deldate -->
+
+	<!-- 회원정보 수정/탈퇴를 위한 용도 -->
+	<select id="getMember" resultType="com.biz.vo.MemberVO">
+		select
+		mseq,email,regdate,joinroute,profileimg,delyn,name,gender,birthday,deldate,pw
+		from member
+		where email=#{email} and pw=#{pw}
+	</select>
+
+
+
+	<!-- 회원가입 : 1차정보 -->
+	<insert id="setMember" parameterType="com.biz.vo.MemberVO">
+		MERGE INTO member
+		USING
+		(SELECT 1 FROM dual)
+		ON
+		(member.email= #{email} and member.delyn= 'n')
+		WHEN NOT matched THEN
+		INSERT
+		(mseq,email,regdate,joinroute,profileimg,delyn,name,gender,birthday)
+		VALUES
+		(member_seq.nextval,#{email},sysdate,#{joinroute},#{profileimg},'n',#{name},#{gender},#{birthday})
+	</insert>
+
+	<!-- 회원가입 : 2차정보 -->
+	<insert id="addMemberInfo" parameterType="com.biz.vo.MemberVO">
+		<selectKey keyProperty="mseq" resultType="com.biz.vo.MemberVO" order="AFTER">
+			select mseq from member where email=#{email}
+		</selectKey>
+		
+		update member
+		set birthday=#{birthday}, pw=#{pw}
+		where email=#{email}
 	</insert>
 	
-	<!-- create table  testmvcuser(
-	id number primary key,
-	pw varchar2(20),
- 	name varchar2(20));
- 	insert into testmvcuser values(1,'test','111','테스터');
- 	commit;  -->
-	
-	
-	<!-- <select id="allUser" resultType="com.biz.vo.UserVO">
-		select  *
-		from testmvcuser
+	<!-- 회원가입 : 관심분야체크 -->
+	<!--<insert id="insertStudents" parameterType="com.biz.vo.InterestVO">
+		MERGE INTO member_interest
+		USING
+		(SELECT 1 FROM dual)
+		ON
+		(member_interest.mseq= #{mseq} and member_interest.iseq= #{iseq})
+		WHEN NOT matched THEN
+		INSERT	
+		(mseq, iseq)
+		VALUES
+		(#{mseq}, #{iseq})
+		insert into member_interest(mseq, iseq)
+		values(#{mseq}, #{iseq})
+	</insert> 
+	 -->
+	<!-- 회원별  관심분야체크 목록
+	<select id="checkInterestList" parameterType="com.biz.vo.MemberVO" resultType="com.biz.vo.InterestVO">
+		select c.category,  i.INTEREST,   c.cateseq, i.INTERESTGROUP, i.iseq
+		from  member_interest mi, interest i, category c
+		where mi.mseq=#{mseq} and mi.iseq = i.iseq and i.INTERESTGROUP=c.INTERESTGROUP;
 	</select>
-	<insert id="insertUser" parameterType="com.biz.vo.UserVO">
-		insert into testmvcuser
-		values(#{id},#{pw},#{name})
-	</insert>  -->
+ -->
+	
+	
 	
 </mapper>	

@@ -39,7 +39,7 @@ public class YoutubeSearch {
  
     private static final String PROPERTIES_FILENAME = "youtube.properties";
 
-    private static final long NUMBER_OF_VIDEOS_RETURNED = 25;
+    private static final long NUMBER_OF_VIDEOS_RETURNED = 5;
 
  
     private static YouTube youtube;

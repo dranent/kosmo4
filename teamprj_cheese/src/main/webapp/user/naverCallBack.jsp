@@ -20,11 +20,11 @@
 	  var naverUser={"id":naver_id_login.getProfileData('id'),
 	  				"email":naver_id_login.getProfileData('email'),
 					"profileImage":naver_id_login.getProfileData('profile_image')};
-    alert(naver_id_login.getProfileData('email'));
+   /*  alert(naver_id_login.getProfileData('email'));
     alert(naver_id_login.getProfileData('id'));
     alert(naver_id_login.getProfileData('nickname'));
     alert(naver_id_login.getProfileData('age'));
-    alert(naver_id_login.getProfileData('profile_image'));
+    alert(naver_id_login.getProfileData('profile_image')); */
     
     //var oPerson = JSON.parse(naverUser);
 

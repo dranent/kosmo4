@@ -2,24 +2,23 @@ package com.biz.vo;
 
 import org.springframework.stereotype.Component;
 
-//@Component
+@Component
 public class InterestVO {
 
-	private int iseq;
-	private int interestgroup;
-	private String interest;
-	
+	private int iseq ;
+	private int cateseq;
+	private String interest ;
 	public int getIseq() {
 		return iseq;
 	}
 	public void setIseq(int iseq) {
 		this.iseq = iseq;
 	}
-	public int getInterestgroup() {
-		return interestgroup;
+	public int getCateseq() {
+		return cateseq;
 	}
-	public void setInterestgroup(int interestgroup) {
-		this.interestgroup = interestgroup;
+	public void setCateseq(int cateseq) {
+		this.cateseq = cateseq;
 	}
 	public String getInterest() {
 		return interest;
@@ -27,5 +26,13 @@ public class InterestVO {
 	public void setInterest(String interest) {
 		this.interest = interest;
 	}
+	
+	
+	
+	
+		
+		
+		
+
 	
 }

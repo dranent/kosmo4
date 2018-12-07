@@ -5,92 +5,60 @@
 <mapper namespace="userNameSpace"> 
 -->
 <mapper namespace="com.biz.mapper.MemberInterestMapper">
-	 <resultMap id="categorysMap" type="com.biz.vo.MemberInterestVO">
-		<result property="mid" column="mid" />
-		<result property="mseq" column="mseq" />
-		<result property="ballade" column="ballade" />
-		<result property="dance" column="dance" />
-		<result property="raphiphop" column="raphiphop" />
-		<result property="rnbsoul" column="rnbsoul" />
-		<result property="indie" column="indie" />
-		<result property="rockmetal" column="rockmetal" />
-		<result property="trot" column="trot" />
-		<result property="jazz" column="jazz" />
-		<result property="except1" column="except1" />
-		<result property="fiction" column="fiction" />
-		<result property="poem" column="poem" />
-		<result property="essay" column="essay" />
-		<result property="classic" column="classic" />
-		<result property="cartoon" column="cartoon" />
-		<result property="appellative" column="appellative" />
-		<result property="history" column="history" />
-		<result property="science" column="science" />
-		<result property="health" column="health" />
-		<result property="hobby" column="hobby" />
-		<result property="leisure" column="leisure" />
-		<result property="trip" column="trip" />
-		<result property="magazine" column="magazine" />
-		<result property="except2" column="except2" />
-		<result property="cook" column="cook" />
-		<result property="diy" column="diy" />
-		<result property="except3" column="except3" />
-		<result property="stroll" column="stroll" />
-		<result property="festival" column="festival" />
-		<result property="shopping" column="shopping" />
-		<result property="bicycle" column="bicycle" />
-		<result property="climbing" column="climbing" />
-		<result property="exhibition" column="exhibition" />
-		<result property="movie" column="movie" />
-		<result property="performance" column="performance" />
-		<result property="game" column="game" />
+	<resultMap id="MemberInterestMap" type="com.biz.vo.MemberInterestVO">
+		<id property="mseq" column="mseq" />
+		<result property="iseq" column="iseq" />
+		<collection property="interest" resultMap="InterestMap" /> 
+		<collection property="category" resultMap="CategoryMap" /> 
 	</resultMap>
 	
- 	<select id="getMemberInterest" resultType="com.biz.vo.MemberInterestVO">
- 		select * from member_interest
- 		where mid=#{value}
- 	</select>
- 	
- 	<!-- <insert id="setMemberInterest" parameterType="com.biz.vo.CategoryVO">
-		insert into category
-		values(#{mid},#{interestgroup},#{category})
-	</insert> -->
+	<resultMap id="CategoryMap" type="com.biz.vo.CategoryVO">
+		<id property="cateseq" column="cateseq" />
+		<result property="category" column="category" />
+	</resultMap>
 	
+	<resultMap id="InterestMap" type="com.biz.vo.InterestVO">
+		<id property="iseq" column="iseq" />
+		<result property="cateseq" column="cateseq" />
+		<result property="interest" column="interest" />
+	</resultMap>
 	
- 	<!-- <select id="getInterest" resultType="interestMap">
- 		select *
- 		from interest 
- 	</select>
- 	
- 	<select id="getCategory" resultType="categoryMap">
- 		select *
- 		from category 
- 	</select> -->
- 	
- 	<!-- <insert id="setCategory" parameterType="com.biz.vo.CategoryVO">
-		insert into category
-		values(cate_seq.nextval,#{interestgroup},#{category})
+ 	<insert id="insertCheckList" parameterType="com.biz.vo.MemberInterestVO">
+		MERGE INTO member_interest
+		USING
+		(SELECT 1 FROM dual)
+		ON
+		(member_interest.mseq= #{mseq} and member_interest.iseq= #{iseq})
+		WHEN NOT matched THEN
+		INSERT	
+		(mseq, iseq)
+		VALUES
+		(#{mseq}, #{iseq})
 	</insert>
 	
-	<insert id="setInterest" parameterType="com.biz.vo.InterestVO">
-		insert into interest
-		values(interest_seq.nextval,#{interestgroup},#{interest})
-	</insert> -->
-	
-	<!-- create table  testmvcuser(
-	id number primary key,
-	pw varchar2(20),
- 	name varchar2(20));
- 	insert into testmvcuser values(1,'test','111','테스터');
- 	commit;  -->
-	
-	
-	<!-- <select id="allUser" resultType="com.biz.vo.UserVO">
-		select  *
-		from testmvcuser
+ 	<!-- 회원MSEQ별    CATEGORY.CATESEQ-INTEREST.ISEQ -->
+	<select id="selectVideoCheckList" parameterType="com.biz.vo.MemberInterestVO" resultMap="MemberInterestMap">
+		select c.cateseq, c.category , i.iseq ,  i.INTEREST
+		from  member_interest mi, interest i, category c
+		where c.cateseq =3
+		and mi.mseq=#{mseq}
+        and mi.iseq = i.iseq
+        and i.cateseq = c.cateseq
+        order by  c.cateseq,i.iseq
 	</select>
-	<insert id="insertUser" parameterType="com.biz.vo.UserVO">
-		insert into testmvcuser
-		values(#{id},#{pw},#{name})
-	</insert>  -->
+	
+	<!-- 회원MSEQ별    CATEGORY.CATESEQ-INTEREST.ISEQ -->
+	<select id="selectMusicCheckList" parameterType="com.biz.vo.MemberInterestVO" resultMap="MemberInterestMap">
+		select c.cateseq, c.category , i.iseq ,  i.INTEREST
+		from  member_interest mi, interest i, category c
+		where c.cateseq =1
+		and mi.mseq=#{mseq}
+        and mi.iseq = i.iseq
+        and i.cateseq = c.cateseq
+        order by  c.cateseq,i.iseq
+	</select>
+	
+	
+	
 	
 </mapper>	

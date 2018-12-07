@@ -9,5 +9,6 @@ public interface MemberMapper {
 
 	public MemberVO getMember(String mid);
 	public int setMember(MemberVO memberVO);
+	public int addMemberInfo(MemberVO vo);
 	
 }

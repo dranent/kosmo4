@@ -44,6 +44,7 @@ public class UserController { // implements Controller {
 		if(!vo.getName().equals("")) {
 			HttpSession session = request.getSession();
 			session.setAttribute("SESS_ID", vo.getId());
+			System.out.println(vo.getId());
 			session.setAttribute("SESS_NAME", vo.getName());
 			mav.setViewName("user/main");
 		} else {

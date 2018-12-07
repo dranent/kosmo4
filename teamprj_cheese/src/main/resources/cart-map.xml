@@ -44,6 +44,9 @@
  	<select id="selectAll" 
  			parameterType="String"
  			resultMap="cartMap">
+ 		select CATESEQ as cseq, INTERESTGROUP as gcode, CATEGORY as gname
+		from category
+<!-- 
  		select c.cseq,  c.gcode, c.amount,
 		   g.gname, g.gprice , 
 		   t.cate_name,
@@ -52,7 +55,7 @@
 		where c.regid = #{value}
 		 	and c.gcode = g.gcode
 			and g.cate_code=t.cate_code	
-			and g.gcode=i.gcode	
+			and g.gcode=i.gcode -->	
  	</select>
  	
  	<!-- @Param으로 다중 파라미터 들어올 경우 parameterType 생략 -->
